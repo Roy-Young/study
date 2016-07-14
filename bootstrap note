@@ -1,1 +1,64 @@
+一 框架
+1.default
+从body中去掉了margin，这样内容就会紧贴浏览器窗口边缘；
+为body应用了background-color: white;；
+Bootstrap以@baseFontFamily、@baseFontSize和@baseLineHeight属性作为排版的基准，确保整个网站的标题及其他内容的行高一致；
+Bootstrap通过@linkColor设置全局链接颜色，只在:hover状态下给链接添加下划线。
+记住，要修改默认颜色，可以直接修改相应.less文件中的全局变量值。要么修改scaffolding.less文件，要么修改你自己的样式表。
 
+2.默认网格系统
+Bootstrap默认的网格布局（图1-1）包含12列，940像素宽，不支持响应式布局。加载响应式CSS文件后，网格布局会根据视口（viewport）宽
+度在724像素到1170像素之间伸缩。视口宽度小于767像素时，说明是平板电脑或更小的设备，布局中的列会垂直堆叠起来。默认宽度下，每
+列宽60像素，且向左平移20像素。
+有row span*（.span*中的*加起来必须等于12） offset*三个class使用（offset会加一）；
+
+3.流式网格系统
+流式网格系统的列宽定义使用百分比，而不是像素。流式网格系统与固定网格系统一样都具有响应能力，可适应不同的屏幕和设备。只要把某
+一行的.row改为.row-fluid，这一行就会成为流式的。不改变列的类，是为了简化固定和流式网格的切换。想平移列？跟固定网格中一样，在
+要平移的列中添加.offset*类即可。流式网格中的嵌套有点不一样。原因是在使用百分比的情况下，每个.row都会把列数重置为12。
+
+4.容器布局
+要在页面中实现固定宽度、居中的布局，只要把内容统统放到<div class="container">...</div>中即可。如果既想实现流式布局，又想把所
+有内容都封装到一个容器里，可以使用<div class="container-fluid">...</div>。流式布局适合很多应用、管理界面及其他项目。
+
+5.响应式设计
+要让Bootstrap支持响应式布局，必须在<head>标签中添加一个<meta>标签。另外，如果你下载的文件中没有响应式CSS文件，也要单独下载。
+响应式布局必需的标签和文件如下所示：
+<!DOCTYPE html>
+<html>
+<head>
+<title>My amazing Bootstrap site!</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/css/bootstrap.css" rel="stylesheet">
+<link href="/css/bootstrap-responsive.css" rel="stylesheet">
+</head>
+
+Bootstrap内部支持5种不同的布局，都依赖于CSS媒体查询。最大布局中每一列的宽度为70像素，而常规布局中每一列宽度是60像素。在适合
+平板电脑的布局中，列宽缩小为42像素，再窄一点，每一列就会流动起来，变成在垂直方向上堆叠，并且都与视口同宽（见表1-1）。
+表1-1：响应式媒体查询
+目标设备 布局宽度 列宽 列间距
+大屏幕 至少1200px 70px 30px
+常规 至少980px 60px 20px
+平板竖屏 至少768px 42px 20px
+手机到平板 至多767px 流式列，宽度不固定
+手机 至多480px 流式列，宽度不固定
+
+媒体查询辅助类
+类 手机 平板 电脑
+.visible-phone 显示 隐藏 隐藏
+.visible-tablet 隐藏 显示 隐藏
+.visible-desktop 隐藏 隐藏 显示
+.hidden-phone 隐藏 显示 显示
+.hidden-tablet 显示 隐藏 显示
+.hidden-desktop 显示 显示 隐藏
+
+二 预定义样式
+
+1 排版
+对页面排版，Bootstrap使用的默认字体栈为"Helvetica Neue", Helvetica, Arial, sans-serif;。这些字体也是主流操作系统默认支持的标
+准字体。万一明确指定的字体都不存在，那么负责兜底儿的sans-serif会告诉浏览器使用默认的字体。页面正文的font-size是14像素，
+lineheight是20像素。所有段落的margin-bottom是10像素，也就是line-height的一半。
+
+2 标题 段落 强调等字体
+
+3 表单，表格样式：搜索表单，行内表单，横向表单，扩展的表单控件（前置和后置内容）
